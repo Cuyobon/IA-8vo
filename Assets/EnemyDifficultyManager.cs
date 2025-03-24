@@ -42,4 +42,6 @@ public class EnemyDifficultyManager : MonoBehaviour
         if (rawDifficulty < 170) return 4;
         return 5;
     }
+    // sacar cual seria la puntuacion maxima con max stats, y min stats
+    //valor - minimo  / maximo - minimo
 }
