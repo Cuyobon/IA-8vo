@@ -28,13 +28,19 @@ public class EnemyStats : MonoBehaviour
     private void SendStatsToHUD()
     {
         EnemyDifficultyManager hudManager = Object.FindFirstObjectByType<EnemyDifficultyManager>();
-        if (hudManager != null)
+
+        if (hudManager == null)
         {
-            hudManager.CalculateAndDisplayDifficulty(this);
+            Debug.LogError("No se encontró EnemyDifficultyManager en la escena. Asegúrate de que está en un GameObject activo.");
+            return;
         }
-        else
+
+        if (hudManager.difficultyText == null || hudManager.hpText == null)
         {
-            Debug.LogError("No se encontró el EnemyDifficultyManager en la escena.");
+            Debug.LogError("Los TextMeshProUGUI no están asignados en EnemyDifficultyManager.");
+            return;
         }
+
+        hudManager.CalculateAndDisplayDifficulty(this);
     }
 }
